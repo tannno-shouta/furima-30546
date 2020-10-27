@@ -11,14 +11,16 @@
 | name     | string | null: false |
 | email    | string | null: false |
 | encrypted_password | string | null: false |
-| f_name   | string | null: false |
-| b_name   | string | null: false |
-| birthday | string | null: false |
+| first_name | string | null: false |
+| last_name  | string | null: false |
+| first_kana | string | null: false |
+| last_kana  | string | null: false |
+| birthday  | date   | null: false |
 
 ### Association
 
 - has_many :items
-- has_many :buyer
+- has_many :buyers
 
 ## items テーブル
 
@@ -46,7 +48,7 @@
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | user     | references | foreign_key: true |
-| items    | references | foreign_key: true |
+| item    | references | foreign_key: true |
 
 ### Association
 - belongs_to :users
