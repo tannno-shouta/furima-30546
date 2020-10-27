@@ -1,24 +1,71 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# テーブル設計
 
-* Ruby version
+## users テーブル
 
-* System dependencies
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| encrypted_password | string | null: false |
+| first_name | string | null: false |
+| last_name  | string | null: false |
+| first_kana | string | null: false |
+| last_kana  | string | null: false |
+| birthday  | date   | null: false |
 
-* Configuration
+### Association
 
-* Database creation
+- has_many :items
+- has_many :buyers
 
-* Database initialization
+## items テーブル
 
-* How to run the test suite
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| product  | string | null: false |
+| message  | text   | null: false |
+| category_id | integer| null: false |
+| status_id   | integer | null: false |
+| shipping_id | integer | null: false |
+| area_id     | integer | null: false |
+| days_id     | integer | null: false |
+| price    | integer | null: false |
+| user     | references | foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to :user
+- has_one :buyer
+
+## buyers テーブル
+
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| user     | references | foreign_key: true |
+| item    | references | foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+
+## addresses テーブル
+
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| postcode | string | null: false |
+| area_id | integer | null: false |
+| municipality | string | null: false |
+| address  | string | null: false |
+| building | string |-------------|
+| tel      | string | null: false |
+| buyer     | references | foreign_key: true |
+
+### Association
+
+- belongs_to :buyer
