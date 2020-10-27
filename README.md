@@ -41,7 +41,7 @@
 - belongs_to :user
 - has_one :buyer
 
-## buyerss テーブル
+## buyers テーブル
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
