@@ -10,22 +10,22 @@
 | nickname | string | null: false |
 | name     | string | null: false |
 | email    | string | null: false |
-| password | string | null: false |
+| encrypted_password | string | null: false |
+| f_name   | string | null: false |
+| b_name   | string | null: false |
 | birthday | string | null: false |
 
 ### Association
 
 - has_many :items
-- belongs_to :address
-
+- has_many :buyer
 
 ## items テーブル
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-|  images  | string | null: false |
 | product  | string | null: false |
-| message  | string | null: false |
+| message  | text   | null: false |
 | password | string | null: false |
 | category | string | null: false |
 | status   | string | null: false |
@@ -39,7 +39,7 @@
 ### Association
 
 - belongs_to :users
-- belongs_to :address
+- has_one :buyer
 
 ## buyer テーブル
 
@@ -51,6 +51,7 @@
 ### Association
 - belongs_to :users
 - belongs_to :items
+- has_one :buyer
 
 
 ## address テーブル
@@ -58,13 +59,13 @@
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | postcode | string | null: false |
-| street   | string | null: false |
+| street_id | integer | null: false |
 | municipality | string | null: false |
 | address  | string | null: false |
-|building  | string |-------------|
+| building | string |-------------|
 | tel      | string | null: false |
+| buyer     | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :buyer
