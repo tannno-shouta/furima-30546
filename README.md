@@ -51,7 +51,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :addresses
+- has_one :address
 
 
 ## addresses テーブル
@@ -59,7 +59,7 @@
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | postcode | string | null: false |
-| street_id | integer | null: false |
+| area_id | integer | null: false |
 | municipality | string | null: false |
 | address  | string | null: false |
 | building | string |-------------|
