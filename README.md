@@ -28,19 +28,18 @@
 | -------- | ------ | ----------- |
 | product  | string | null: false |
 | message  | text   | null: false |
-| password | string | null: false |
 | category | string | null: false |
 | status   | string | null: false |
-| shipping | string | null: false |
-| area     | string | null: false |
-| days     | string | null: false |
-| price    | string | null: false |
+| shipping_id | integer | null: false |
+| area_id     | integer | null: false |
+| days_id     | integer | null: false |
+| price_id    | integer | null: false |
 | user     | references | foreign_key: true |
 
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one :buyer
 
 ## buyer テーブル
@@ -51,8 +50,8 @@
 | item    | references | foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - has_one :buyer
 
 
