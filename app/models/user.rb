@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   with_options presence: true do
-
+    
     validates :nickname
     validates :password,format: { with:/\A[a-z0-9]+\z/i  }
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角ひらがな、全角カタカナ、漢字で入力して下さい。'}
