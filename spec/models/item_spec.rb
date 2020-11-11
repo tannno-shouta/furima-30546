@@ -38,36 +38,38 @@ RSpec.describe Item, type: :model do
       #商品の詳細についてのテスト
 
       it "カテゴリーについて選択がなければ出品できない" do
-        @item.category_id =nil
+        @item.category_id =1
         @item.valid? 
-        expect(@item.errors.full_messages).to include("Category can't be blank") 
+        expect(@item.errors.full_messages).to include("Category must be other than 1") 
       end
 
+
       it "商品詳細について選択がなければ出品できない" do
-        @item.status_id =nil
+        @item.status_id =1
         @item.valid? 
-        expect(@item.errors.full_messages).to include("Status can't be blank") 
+        expect(@item.errors.full_messages).to include("Status must be other than 1") 
       end
 
 
       #配送についてのテスト
 
       it "配送料について選択がなければ出品できない" do
-        @item.shipping_id =nil
+        @item.shipping_id =1
         @item.valid? 
-        expect(@item.errors.full_messages).to include("Shipping can't be blank") 
+        expect(@item.errors.full_messages).to include("Shipping must be other than 1") 
       end
 
       it "発送元の地域について選択がなければ出品できない" do
-        @item.area_id =nil
+        @item.area_id =1
         @item.valid? 
-        expect(@item.errors.full_messages).to include("Area can't be blank") 
+        expect(@item.errors.full_messages).to include("Area must be other than 1") 
       end
 
+
       it "発送までの日数について選択がなければ出品できない" do
-        @item.days_id =nil
+        @item.days_id =1
         @item.valid? 
-        expect(@item.errors.full_messages).to include("Days can't be blank") 
+        expect(@item.errors.full_messages).to include("Days must be other than 1") 
       end
 
       #販売価格についてのテスト
