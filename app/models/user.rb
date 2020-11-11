@@ -16,5 +16,8 @@ class User < ApplicationRecord
       validates :first_kana, format: {with: zenkaku_kana , message: 'は全角カタカナで入力して下さい。'}
       validates :last_kana, format: {with: zenkaku_kana , message: '全角カタカナで入力して下さい。'}
       validates :birthday
+
+      
  end
+      has_many :items
 end
