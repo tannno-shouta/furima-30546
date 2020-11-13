@@ -67,7 +67,7 @@ RSpec.describe Item, type: :model do
 
 
       it "発送までの日数について選択がなければ出品できない" do
-        @item.days_id =1
+        @item.day_id =1
         @item.valid? 
         expect(@item.errors.full_messages).to include("Days must be other than 1") 
       end
