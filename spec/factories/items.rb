@@ -6,7 +6,7 @@ FactoryBot.define do
     status_id   { 2 }
     shipping_id { 2 }
     area_id     { 2 }
-    days_id     { 2 }
+    day_id     { 2 }
     price  { 20000 }
     user
 
