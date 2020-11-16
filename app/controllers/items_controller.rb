@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    unless current_user == @item.user
+      redirect_to root_path
+    end
   end
 
   def update
@@ -40,5 +43,6 @@ class ItemsController < ApplicationController
   end
 
   def common_processing
-  :@item = Item.find(params[:id])
+  @item = Item.find(params[:id])
+  end
 end
