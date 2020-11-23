@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+      editing_restrictions
     unless current_user == @item.user
       redirect_to root_path
     end
@@ -41,6 +42,7 @@ class ItemsController < ApplicationController
     unless current_user == @item.user
     @item.destroy
     redirect_to root_path
+    end
   end
 
   private
@@ -51,4 +53,11 @@ class ItemsController < ApplicationController
   def common_processing
   @item = Item.find(params[:id])
   end
+  
+def editing_restrictions
+    if  @item.order != nil
+      redirect_to root_path
+    end
+  end
+
 end
