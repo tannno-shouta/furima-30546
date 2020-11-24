@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! , except: [:index]
   before_action :common_processing, only: [:edit, :update,:show,:destroy]
+  before_action :editing_restrictions, only: [:edit]
 
   
   def index
@@ -24,10 +25,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-      editing_restrictions
-    unless current_user == @item.user
-      redirect_to root_path
-    end
   end
 
   def update
@@ -53,9 +50,9 @@ class ItemsController < ApplicationController
   def common_processing
   @item = Item.find(params[:id])
   end
-  
+
 def editing_restrictions
-    if  @item.order != nil
+    if current_user.id != @item.user.id || @item.order 
       redirect_to root_path
     end
   end
